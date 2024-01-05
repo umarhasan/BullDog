@@ -168,9 +168,32 @@ class UsersController extends Controller
 
         return response()->json(['error' => 'Unauthorized'], 401);
     }
+    public function register(Request $request)
+    {
+        // return response()->json(['new' => $request->all()]);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Create a new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        $user->assignRole('User');
+        // Generate and attach a token
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        return response()->json(['token' => $token, 'success' => true], 201);
+
+    }
     public function apitest()
     {
-        Artisan::call('migrate --seed');
+        // Artisan::call('migrate --seed');
         $user = auth()->user();
         // return $user;
         // $roles = $user->token()->scopes['roles'];

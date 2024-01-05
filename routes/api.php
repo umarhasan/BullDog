@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [UsersController::class, 'login']);
+Route::post('register', [UsersController::class, 'register']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('apitest', [UsersController::class, 'apitest']);
     // return $request->user();

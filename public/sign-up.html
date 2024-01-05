@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="./assets/css/style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Sign Up</title>
 </head>
 
@@ -45,7 +48,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./pups-available.html">Available Pups</a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="./planned-breedings.html">Planned Breedings</a>
                             </li>
@@ -86,19 +89,30 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="login-form">
-                        <form>
+                        <form id="loginForm">
                             <h3 class="login-txt">Sign Up</h3>
                             <p class="new-text">Already a member? <a href="./login.html"> Log In</a> </p>
                             <div class="form-group mb-3 mt-4">
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <input type="text" class="form-control fields" id="exampleInputname" name="name"
+                                    aria-describedby="nameHelp" placeholder="Enter Your name" required>
+                            </div>
+                            <div class="form-group mb-3 mt-4">
+                                <input type="email" class="form-control " id="exampleInputEmail1" name="email"
                                     aria-describedby="emailHelp" placeholder="Enter Your Email" required>
                             </div>
                             <div class="form-group mb-3">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Password" required>
+                                <input type="password" name="password" class="form-control fields"
+                                    id="exampleInputPassword1" placeholder="Enter Your Password" required>
                             </div>
                             <div class="bone-btn1">
-                                <button class="submit-bone" type="submit">
-                                    <span>Sign Up</span>
+                                <button class="submit-bone" type="button" onclick="register()" id="loginButton">
+                                    <span id="text">Sign Up</span>
+                                    <div id="loadingIndicator" style="display: none;">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <span>Loading...</span>
+                                    </div>
                                 </button>
 
                                 <!-- Filter: https://css-tricks.com/gooey-effect/ -->
@@ -108,8 +122,7 @@
                                         <filter id="goo">
                                             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
                                             <feColorMatrix in="blur" mode="matrix"
-                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                                                result="goo" />
+                                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
                                             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
                                         </filter>
                                     </defs>
@@ -221,6 +234,79 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        if (!localStorage.getItem('token')) {
+            const redirectUrl = 'http://127.0.0.1:8000/visitors-login.html';
+            const message = 'Please log in to access this page.';
+            window.location.href = `${redirectUrl}?message=${encodeURIComponent(message)}`;
+        }
+
+    </script>
+    <script>
+
+        function register() {
+            var form = document.getElementById('loginForm');
+            var button = document.getElementById('loginButton');
+            var loadingIndicator = document.getElementById('loadingIndicator');
+            var text = document.getElementById('text');
+
+            var formData = new FormData(form);
+
+            text.innerText = '';
+            button.disabled = true;
+            loadingIndicator.style.display = 'inline';
+
+            fetch('http://127.0.0.1:8000/api/register', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    if (data.success == true) {
+
+                        // localStorage.setItem('token', data.token);
+                        console.log('Register successful');
+                        // toastr.success('Register successful');
+                        window.location.href = 'https://weloveamericanbulldogs.com/visitors-login.html?message=success';
+                        form.reset();
+                    } else {
+                        const errors = data.errors;
+                        console.log(errors);
+                        for (const key in errors) {
+                            if (errors.hasOwnProperty(key)) {
+
+                                toastr.error(errors[key][0]);
+
+                            }
+                        }
+                    }
+                    text.innerText = 'Sign Up';
+                    button.disabled = false;
+                    loadingIndicator.style.display = 'none';
+
+
+                })
+                .catch(error => {
+
+                    console.error('Register failed:', error);
+                    text.innerText = 'Sign Up';
+                    button.disabled = false;
+                    loadingIndicator.style.display = 'none';
+
+
+                });
+
+        }
+    </script>
 </body>
 
 </html>

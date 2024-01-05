@@ -344,6 +344,16 @@
             });
         </script>
         <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const messageParam = urlParams.get('message');
+
+            if (messageParam === 'success') {
+                toastr.success('Register successful');
+            } else if (messageParam != null) {
+                const decodedMessage = decodeURIComponent(messageParam);
+                toastr.info(decodedMessage);
+            }
+
             function login() {
                 var form = document.getElementById('loginForm');
                 var button = document.getElementById('loginButton');
@@ -366,13 +376,17 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        // Store the token securely (e.g., in localStorage)
                         console.log(data);
                         if (data.success == true) {
 
                             localStorage.setItem('token', data.token);
                             console.log('Login successful');
                             toastr.success('Login successful');
+
+                            form.reset();
+                            text.innerText = 'Login';
+                            button.disabled = false;
+                            loadingIndicator.style.display = 'none';
                         }
                     })
                     .catch(error => {
