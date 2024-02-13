@@ -223,7 +223,7 @@
                 text-align: center;
                 margin: 0px auto;
                 display: table;
-                margin-top: 20px;" href="planned-litter.html">Next</a>
+                margin-top: 20px;" href="sign-up.html">Sign Up</a>
                 </form>
             </div>
         </section>
@@ -384,10 +384,14 @@
                             toastr.success('Login successful');
 
                             form.reset();
-                            text.innerText = 'Login';
+
+                            window.location.href = `https://weloveamericanbulldogs.com/planned-litter.html`
+                        } else{
+                            toastr.error('Email or Password is not correct.');
+                        }
+                        text.innerText = 'Login';
                             button.disabled = false;
                             loadingIndicator.style.display = 'none';
-                        }
                     })
                     .catch(error => {
                         console.error('Login failed:', error);

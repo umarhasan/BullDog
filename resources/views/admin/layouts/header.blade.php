@@ -1,7 +1,7 @@
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><h1 class="font-weight-bold">Pedro 2</h1></a>
+            <a class="navbar-brand" href="#"><h1 class="font-weight-bold">WLAB</h1></a>
             {{-- <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a> --}}
             <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
         </div>

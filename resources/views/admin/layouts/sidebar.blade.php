@@ -6,8 +6,18 @@
                  <li class="active">
                      <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                  </li>
-                
-                 <li class="menu-item-has-children dropdown">
+                <li class="menu-item-has-children dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                         aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Pages</a>
+                     <ul class="sub-menu children dropdown-menu">
+                         <li><a href="{{route('home.index')}}">
+                             <i class="fa fa-puzzle-piece"></i>Home Page</li>
+                            </a>
+
+                     </ul>
+                 </li>
+
+                 {{-- <li class="menu-item-has-children dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                          aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Roles</a>
                      <ul class="sub-menu children dropdown-menu">
@@ -36,7 +46,7 @@
                             </a>
 
                      </ul>
-                 </li>
+                 </li> --}}
 
              </ul>
          </div><!-- /.navbar-collapse -->
