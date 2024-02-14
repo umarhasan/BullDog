@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/done', function () {
+    Artisan::call('migrate:fresh --seed');
+    Artisan::call('optimize:clear');
+    return 'done';
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,6 +30,13 @@ Route::get('/', function () {
 Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
     Route::get('/home', [PagesController::class, 'home'])->name('home.index');
     Route::post('/home/store', [PagesController::class, 'store'])->name('home.store');
+
+    // About
+    Route::get('/about', [PagesController::class, 'about'])->name('about.index');
+    Route::post('/about/store', [PagesController::class, 'aboutstore'])->name('about.store');
+    Route::get('/about/edits/{id}', [PagesController::class, 'aboutEdit'])->name('about.edit');
+    Route::put('/about/update/{id}', [PagesController::class, 'aboutUpdate'])->name('about.update');
+    Route::delete('/about/delete/{id}', [PagesController::class, 'aboutDestroy'])->name('about.destroy');
 
     Route::resource('roles', RoleController::class);
         Route::resource('permission', PermissionController::class);
