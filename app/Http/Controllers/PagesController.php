@@ -44,7 +44,7 @@ class PagesController extends Controller
             if ($request->hasFile('value')) {
                 $file = $request->file('value');
                 $fileName = time() . '_' . $file->getClientOriginalName();
-                $file->storeAs('public/files', $fileName);
+                $file->move('uploads/user/profiles/', $fileName);
                 $metaValue = [
                     'type' => $type,
                     'value' => $fileName

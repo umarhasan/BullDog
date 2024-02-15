@@ -6,60 +6,210 @@
                  <li class="active">
                      <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                  </li>
-                 <li class="menu-item-has-children dropdown {{ request()->routeIs('about.*') ? 'show' : '' }}">
+                <li class="menu-item-has-children dropdown {{ request()->routeIs('about.*') ? 'show' : '' }}">
+
+
 
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                          aria-expanded="false">
-                         <i class="menu-icon fa fa-cogs"></i>Pages
+                         <i class="menu-icon fa fa-cogs"></i>Home Page
                      </a>
-                     <ul class="sub-menu children dropdown-menu {{ request()->routeIs('about.*') ? 'show' : '' }}">
-                         <li>
-                             <a href="{{ route('home.index') }}">
-                                 <i class="fa fa-puzzle-piece"></i>Home Page
+                     <ul class="sub-menu children dropdown-menu ">
+
+                         <li class="{{ request()->routeIs('home_section1.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section1.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 1
                              </a>
                          </li>
-                         <li class="{{ request()->routeIs('about.*') ? 'active' : '' }}">
-                             <a href="{{ route('about.index') }}">
-                                 <i class="fa fa-puzzle-piece"></i>About Page
+                         <li class="{{ request()->routeIs('home_section2.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section2.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 2
                              </a>
                          </li>
+                         <li class="{{ request()->routeIs('home_section3.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section3.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 3
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('home_section4.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section4.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 4
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('home_section5.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section5.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 5
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('home_section6.index') ? 'active' : '' }}">
+                             <a href="{{ route('home_section6.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 6
+                             </a>
+                         </li>
+
                      </ul>
                  </li>
+                 <li class="menu-item-has-children dropdown ">
+
 
                  <li class="active">
                      <a href="/setting"><i class="menu-icon fa fa-laptop"></i>Setting</a>
                  </li>
 
-                 {{-- <li class="menu-item-has-children dropdown">
+                  <li class="menu-item-has-children dropdown">
+
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                         aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Roles</a>
-                     <ul class="sub-menu children dropdown-menu">
-                         <li><a href="{{route('roles.index')}}">
-                             <i class="fa fa-puzzle-piece"></i>Roles</li>
-                            </a>
+                         aria-expanded="false">
+                         <i class="menu-icon fa fa-cogs"></i>About Page
+                     </a>
+                     <ul class="sub-menu children dropdown-menu ">
+
+                         <li class="{{ request()->routeIs('about_section1.index') ? 'active' : '' }}">
+                             <a href="{{ route('about_section1.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 1
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('about_section2.index') ? 'active' : '' }}">
+                             <a href="{{ route('about_section2.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 2
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('about_section3.index') ? 'active' : '' }}">
+                             <a href="{{ route('about_section3.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 3
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('about_section4.index') ? 'active' : '' }}">
+                             <a href="{{ route('about_section4.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 4
+                             </a>
+                         </li>
+
 
                      </ul>
                  </li>
-                 <li class="menu-item-has-children dropdown">
+                 <li class="menu-item-has-children dropdown ">
+
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                         aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Permissions</a>
-                     <ul class="sub-menu children dropdown-menu">
-                         <li><a href="{{route('permission.index')}}">
-                             <i class="fa fa-puzzle-piece"></i>Permissions</li>
-                            </a>
+                         aria-expanded="false">
+                         <i class="menu-icon fa fa-cogs"></i>Get A Puppy Page
+                     </a>
+                     <ul class="sub-menu children dropdown-menu ">
+
+                         <li class="{{ request()->routeIs('get_section1.index') ? 'active' : '' }}">
+                             <a href="{{ route('get_section1.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 1
+                             </a>
+                         </li>
 
                      </ul>
                  </li>
-                 <li class="menu-item-has-children dropdown">
+                 <li class="menu-item-has-children dropdown ">
+
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                         aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Users</a>
-                     <ul class="sub-menu children dropdown-menu">
-                         <li><a href="{{route('users.index')}}">
-                             <i class="fa fa-puzzle-piece"></i>Users</li>
-                            </a>
+                         aria-expanded="false">
+                         <i class="menu-icon fa fa-cogs"></i>Pups Available Page
+                     </a>
+                     <ul class="sub-menu children dropdown-menu ">
+
+                         <li class="{{ request()->routeIs('available_section1.index') ? 'active' : '' }}">
+                             <a href="{{ route('available_section1.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 1
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('available_section2.index') ? 'active' : '' }}">
+                             <a href="{{ route('available_section2.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 2
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('available_section3.index') ? 'active' : '' }}">
+                             <a href="{{ route('available_section3.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 3
+                             </a>
+                         </li>
+                         <li class="{{ request()->routeIs('available_section4.index') ? 'active' : '' }}">
+                             <a href="{{ route('available_section4.index') }}">
+                                 <i class="fa fa-puzzle-piece"></i>Section# 4
+                             </a>
+                         </li>
 
                      </ul>
-                 </li> --}}
+                 </li>
+                 <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Planned Breed Page
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('breed_section1.index') ? 'active' : '' }}">
+                            <a href="{{ route('breed_section1.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 1
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                 <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Bulldog Stronger Page
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('stronger_section1.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section1.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 1
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section2.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section2.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 2
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section3.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section3.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 3
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section4.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section4.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 4
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section5.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section5.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 5
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section6.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section6.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 6
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Our Services Page
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('services.index') ? 'active' : '' }}">
+                            <a href="{{ route('services.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Our Services
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
 
              </ul>
          </div><!-- /.navbar-collapse -->
