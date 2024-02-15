@@ -26,6 +26,10 @@
                      </ul>
                  </li>
 
+                 <li class="active">
+                     <a href="/setting"><i class="menu-icon fa fa-laptop"></i>Setting</a>
+                 </li>
+
                  {{-- <li class="menu-item-has-children dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                          aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Roles</a>

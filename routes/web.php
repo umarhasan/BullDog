@@ -60,3 +60,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/setting', [PagesController::class, 'setting'])->name('setting.index');
+Route::post('/setting.store', [PagesController::class, 'settingstore'])->name('setting.store');
+

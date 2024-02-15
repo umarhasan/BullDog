@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Pages;
+use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller
 {
@@ -94,4 +96,66 @@ class PagesController extends Controller
 
         return redirect()->back()->with('success', 'Data deleted successfully');
     }
+
+    public function setting(){
+        $data['setting'] = Setting::first();
+        return view('admin.pages.setting', $data);
+    }
+
+    public function settingstore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'logo_1' => 'image:jpg,png',
+            'logo_2' => 'image:jpg,png',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'copyright' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $setting = Setting::first();
+
+    
+        $fileName1 =  ($setting) ? $setting->logo_1 : null ;
+        if($request->hasFile('logo_1')){
+
+            $fileName1 = time().'.'. $request->logo_1->extension();
+            $request->logo_1->move(public_path('uploads'), $fileName1);
+        }
+
+
+        $fileName2 =  ($setting) ? $setting->logo_2 : null ;
+        if($request->hasFile('logo_2')){
+      
+            $fileName2 = time().'.'. $request->logo_2->extension();
+            $request->logo_2->move(public_path('uploads'), $fileName2);
+        }
+        
+
+        if($setting){
+            $setting->update([
+                'logo_1' => $fileName1,
+                'logo_2' => $fileName2,
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+                'copyright' => $request->input('copyright'),
+            ]);
+        }
+        else{
+           Setting::create([
+                'logo_1' => $fileName1,
+                'logo_2' => $fileName2,
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+                'copyright' => $request->input('copyright'),
+            ]);
+        }
+       
+    
+        return redirect()->to('setting');
+    }
+    
 }
