@@ -22,27 +22,27 @@
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('home_section2.index') ? 'active' : '' }}">
-                             <a href="{{ route('home_section1.index') }}">
+                             <a href="{{ route('home_section2.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 2
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('home_section3.index') ? 'active' : '' }}">
-                             <a href="{{ route('home_section1.index') }}">
+                             <a href="{{ route('home_section3.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 3
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('home_section4.index') ? 'active' : '' }}">
-                             <a href="{{ route('home_section1.index') }}">
+                             <a href="{{ route('home_section4.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 4
                              </a>
                          </li>
-                         <li class="{{ request()->routeIs('home_section1.index') ? 'active' : '' }}">
+                         <li class="{{ request()->routeIs('home_section5.index') ? 'active' : '' }}">
                              <a href="{{ route('home_section5.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 5
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('home_section6.index') ? 'active' : '' }}">
-                             <a href="{{ route('home_section1.index') }}">
+                             <a href="{{ route('home_section6.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 6
                              </a>
                          </li>
@@ -63,17 +63,17 @@
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('about_section2.index') ? 'active' : '' }}">
-                             <a href="{{ route('about_section1.index') }}">
+                             <a href="{{ route('about_section2.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 2
                              </a>
                          </li>
-                         <li class="{{ request()->routeIs('about_section1.index') ? 'active' : '' }}">
+                         <li class="{{ request()->routeIs('about_section3.index') ? 'active' : '' }}">
                              <a href="{{ route('about_section3.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 3
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('about_section4.index') ? 'active' : '' }}">
-                             <a href="{{ route('about_section1.index') }}">
+                             <a href="{{ route('about_section4.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 4
                              </a>
                          </li>
@@ -111,17 +111,17 @@
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('available_section2.index') ? 'active' : '' }}">
-                             <a href="{{ route('available_section1.index') }}">
+                             <a href="{{ route('available_section2.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 2
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('available_section3.index') ? 'active' : '' }}">
-                             <a href="{{ route('available_section1.index') }}">
+                             <a href="{{ route('available_section3.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 3
                              </a>
                          </li>
                          <li class="{{ request()->routeIs('available_section4.index') ? 'active' : '' }}">
-                             <a href="{{ route('available_section1.index') }}">
+                             <a href="{{ route('available_section4.index') }}">
                                  <i class="fa fa-puzzle-piece"></i>Section# 4
                              </a>
                          </li>
@@ -139,6 +139,63 @@
                         <li class="{{ request()->routeIs('breed_section1.index') ? 'active' : '' }}">
                             <a href="{{ route('breed_section1.index') }}">
                                 <i class="fa fa-puzzle-piece"></i>Section# 1
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                 <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Bulldog Stronger Page
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('stronger_section1.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section1.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 1
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section2.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section2.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 2
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section3.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section3.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 3
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section4.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section4.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 4
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section5.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section5.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 5
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('stronger_section6.index') ? 'active' : '' }}">
+                            <a href="{{ route('stronger_section6.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Section# 6
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Our Services Page
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('services.index') ? 'active' : '' }}">
+                            <a href="{{ route('services.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Our Services
                             </a>
                         </li>
 
