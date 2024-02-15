@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\OurServiceController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionsController;
@@ -77,9 +78,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::delete('/about/delete/{id}', [PagesController::class, 'aboutDestroy'])->name('about.destroy');
 
     Route::resource('roles', RoleController::class);
+
+        Route::resource('permission', PermissionController::class);
+        // user route
+    Route::resource('users',UsersController::class);
+    Route::resource('services',OurServiceController::class);
+    
+
     Route::resource('permission', PermissionController::class);
     // user route
     Route::resource('users', UsersController::class);
+
 
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
