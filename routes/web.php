@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\OurServiceController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
         Route::resource('permission', PermissionController::class);
         // user route
     Route::resource('users',UsersController::class);
+    Route::resource('services',OurServiceController::class);
+    
 
 });
 Route::group(['prefix'=>'user','middleware'=>['auth','role:user']],function(){

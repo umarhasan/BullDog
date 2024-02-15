@@ -6,25 +6,25 @@
                  <li class="active">
                      <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                  </li>
-                 <li class="menu-item-has-children dropdown {{ request()->routeIs('about.*') ? 'show' : '' }}">
+                <li class="menu-item-has-children dropdown {{ request()->routeIs('about.*') ? 'show' : '' }}">
 
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                         aria-expanded="false">
-                         <i class="menu-icon fa fa-cogs"></i>Pages
-                     </a>
-                     <ul class="sub-menu children dropdown-menu {{ request()->routeIs('about.*') ? 'show' : '' }}">
-                         <li>
-                             <a href="{{ route('home.index') }}">
-                                 <i class="fa fa-puzzle-piece"></i>Home Page
-                             </a>
-                         </li>
-                         <li class="{{ request()->routeIs('about.*') ? 'active' : '' }}">
-                             <a href="{{ route('about.index') }}">
-                                 <i class="fa fa-puzzle-piece"></i>About Page
-                             </a>
-                         </li>
-                     </ul>
-                 </li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Pages
+                    </a>
+                    <ul class="sub-menu children dropdown-menu {{ request()->routeIs('about.*') ? 'show' : '' }}">
+                        <li>
+                            <a href="{{ route('home.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>Home Page
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('about.*') ? 'active' : '' }}">
+                            <a href="{{ route('about.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>About Page
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                  {{-- <li class="menu-item-has-children dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
