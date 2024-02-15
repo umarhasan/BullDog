@@ -214,7 +214,7 @@
                                                                                             required>
                                                                                         @if ($metaValue['value'] != null)
                                                                                             <br><img
-                                                                                                src="{{ asset('storage/files/' . $metaValue['value']) }}"
+                                                                                                src="{{ asset('uploads/user/profiles/' . $metaValue['value']) }}"
                                                                                                 class="preview-image"
                                                                                                 alt="File">
                                                                                         @endif
