@@ -86,9 +86,21 @@
                                                     <form action="{{ route('about.store') }}" method="POST">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <label for="meta_key">Meta Key:</label>
-                                                            <input type="text" name="meta_key" class="form-control"
-                                                                required>
+                                                            {{-- <label for="meta_key">Meta Key:</label>
+                                                            <input type="text" name="meta_key" class="form-control" value="{{ request()->segment(2) }}"
+                                                                required> --}}
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text"
+                                                                        >{{ request()->segment(2) }}_</span>
+                                                                    <input type="hidden" readonly name="meta_key_first"
+                                                                        class="input-group-text"
+                                                                        value="{{ request()->segment(2) }}_" required>
+                                                                </div>
+                                                                <input type="text" name="meta_key" class="form-control"
+                                                                    aria-describedby="basic-addon3">
+                                                            </div>
+
                                                         </div>
                                                         <input type="hidden" name="page" value="{{ $name }}">
                                                         <div class="form-group">

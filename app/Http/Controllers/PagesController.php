@@ -8,6 +8,7 @@ use App\Models\Pages;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PagesController extends Controller
 {
@@ -40,7 +41,7 @@ class PagesController extends Controller
         $type = $request->input('type');
 
         // Check if the type is "file"
-        if ($type === 'file') {
+        if ($type == 'file') {
             if ($request->hasFile('value')) {
                 $file = $request->file('value');
                 $fileName = time() . '_' . $file->getClientOriginalName();
@@ -50,7 +51,9 @@ class PagesController extends Controller
                     'value' => $fileName
                 ];
             } else {
-                return redirect()->back()->with('error', 'No file uploaded');
+                $metaData->save();
+                // return redirect()->route('about.index')->with('success', 'Data updated successfully');
+                return redirect()->back()->with('success', 'Data updated successfully');
             }
         } else {
             // For other types, simply get the value from the request
@@ -68,16 +71,26 @@ class PagesController extends Controller
     }
     public function aboutstore(Request $request)
     {
-        // dd($request->all());
-        $metaData = new About();
-
-        $metaData->meta_key = $request->input('meta_key');
-        $metaData->page = $request->input('page');
-        $metaData->meta_value = json_encode([
-            'type' => $request->input('type'),
-            'value' => '',
+        $metaKey = $request->input('meta_key_first') . str_replace(' ', '', $request->input('meta_key'));
+        $validatedData = $request->validate([
+            'meta_key_first' => 'required|string',
+            'meta_key' => [
+                'required',
+            ],
+            'page' => 'required|string',
+            'type' => 'required|string',
         ]);
-        $metaData->save();
+
+        // Create new About instance and save data
+        $about = About::create([
+            'meta_key' => $metaKey,
+            'page' => $validatedData['page'],
+            'meta_value' => json_encode([
+                'type' => $validatedData['type'],
+                'value' => '',
+            ]),
+        ]);
+
         return redirect()->back()->with('success', 'Data updated successfully');
     }
 
@@ -97,7 +110,8 @@ class PagesController extends Controller
         return redirect()->back()->with('success', 'Data deleted successfully');
     }
 
-    public function setting(){
+    public function setting()
+    {
         $data['setting'] = Setting::first();
         return view('admin.pages.setting', $data);
     }
@@ -111,31 +125,31 @@ class PagesController extends Controller
             'email' => 'required|email',
             'copyright' => 'required',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
+
         $setting = Setting::first();
 
-    
-        $fileName1 =  ($setting) ? $setting->logo_1 : null ;
-        if($request->hasFile('logo_1')){
 
-            $fileName1 = time().'.'. $request->logo_1->extension();
+        $fileName1 = ($setting) ? $setting->logo_1 : null;
+        if ($request->hasFile('logo_1')) {
+
+            $fileName1 = time() . '.' . $request->logo_1->extension();
             $request->logo_1->move(public_path('uploads'), $fileName1);
         }
 
 
-        $fileName2 =  ($setting) ? $setting->logo_2 : null ;
-        if($request->hasFile('logo_2')){
-      
-            $fileName2 = time().'.'. $request->logo_2->extension();
+        $fileName2 = ($setting) ? $setting->logo_2 : null;
+        if ($request->hasFile('logo_2')) {
+
+            $fileName2 = time() . '.' . $request->logo_2->extension();
             $request->logo_2->move(public_path('uploads'), $fileName2);
         }
-        
 
-        if($setting){
+
+        if ($setting) {
             $setting->update([
                 'logo_1' => $fileName1,
                 'logo_2' => $fileName2,
@@ -143,9 +157,8 @@ class PagesController extends Controller
                 'email' => $request->input('email'),
                 'copyright' => $request->input('copyright'),
             ]);
-        }
-        else{
-           Setting::create([
+        } else {
+            Setting::create([
                 'logo_1' => $fileName1,
                 'logo_2' => $fileName2,
                 'phone' => $request->input('phone'),
@@ -153,9 +166,9 @@ class PagesController extends Controller
                 'copyright' => $request->input('copyright'),
             ]);
         }
-       
-    
+
+
         return redirect()->to('setting');
     }
-    
+
 }

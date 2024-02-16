@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->String('meta_key');
-            $table->String('meta_value');
+            $table->longText('meta_key');
+            $table->longText('meta_value');
             $table->String('page');
             $table->timestamps();
         });
