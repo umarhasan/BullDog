@@ -7,9 +7,6 @@
                      <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                  </li>
                 <li class="menu-item-has-children dropdown {{ request()->routeIs('about.*') ? 'show' : '' }}">
-
-
-
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                          aria-expanded="false">
                          <i class="menu-icon fa fa-cogs"></i>Home Page
@@ -209,6 +206,30 @@
                     </ul>
                 </li>
 
+
+                    
+
+                <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Testimonial
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('testimonial.index') ? 'active' : '' }}">
+                            <a href="{{ route('testimonial.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>View
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('testimonial.index') ? 'active' : '' }}">
+                            <a href="{{ route('testimonial.create') }}">
+                                <i class="fa fa-puzzle-piece"></i>Add
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
 
              </ul>
