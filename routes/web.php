@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\OurServiceController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionsController;
@@ -32,6 +33,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
     Route::get('/home', [PagesController::class, 'home'])->name('home.index');
     Route::post('/home/store', [PagesController::class, 'store'])->name('home.store');
+
+    // Testimonial 
+    Route::resource('testimonial', TestimonialController::class);
 
     // About
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
