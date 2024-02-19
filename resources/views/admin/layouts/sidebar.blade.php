@@ -207,7 +207,48 @@
                 </li>
 
 
-                    
+                <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Partner
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('partner.index') ? 'active' : '' }}">
+                            <a href="{{ route('partner.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>View
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('partner.index') ? 'active' : '' }}">
+                            <a href="{{ route('partner.create') }}">
+                                <i class="fa fa-puzzle-piece"></i>Add
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>    
+                <li class="menu-item-has-children dropdown ">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="menu-icon fa fa-cogs"></i>Gallery
+                    </a>
+                    <ul class="sub-menu children dropdown-menu ">
+
+                        <li class="{{ request()->routeIs('gallery.index') ? 'active' : '' }}">
+                            <a href="{{ route('gallery.index') }}">
+                                <i class="fa fa-puzzle-piece"></i>View
+                            </a>
+                        </li>
+                        <li class="{{ request()->routeIs('gallery.index') ? 'active' : '' }}">
+                            <a href="{{ route('gallery.create') }}">
+                                <i class="fa fa-puzzle-piece"></i>Add
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>    
 
                 <li class="menu-item-has-children dropdown ">
 

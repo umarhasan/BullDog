@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\OurServiceController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionsController;
@@ -36,6 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     // Testimonial 
     Route::resource('testimonial', TestimonialController::class);
+    Route::resource('gallery', GalleryController::class);
+    Route::resource('partner', PartnerController::class);
 
     // About
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');

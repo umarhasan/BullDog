@@ -9,7 +9,7 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Testimonial List</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">Gallery List</h6>
       <a href="{{route('testimonial.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add Testimonial"><i class="fa fa-plus"></i> Add Testimonial</a>
     </div>
     <div class="card-body">
@@ -18,38 +18,31 @@
           <thead>
             <tr>
               <th>S.N.</th>
-              <th>Name</th>
               <th>Photo</th>
-              <th>Description</th>
               <th>Action</th>
             </tr>
           </thead>
           <tfoot>
           <tr>
               <th>S.N.</th>
-              <th>Name</th>
               <th>Photo</th>
-              <th>Description</th>
               <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
-            @foreach($testimonials as $key => $user)
+            @foreach($gallerys as $key => $user)
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td>{{$user->title}}</td>
                     <td>
                       @if($user->image)
-                      <img src="/uploads/testimonial/{{$user->image}}" class="img-fluid rounded-circle" style="max-width:50px" alt="{{$user->image}}">
+                      <img src="/uploads/gallery/{{$user->image}}" class="img-fluid rounded-circle" style="max-width:50px" alt="{{$user->image}}">
                       @else
                       <img src="{{asset('images/avatar/64-1.jpg')}}" class="img-fluid rounded-circle" style="max-width:50px" alt="avatar.png">
                       @endif
                     </td>
-                    <td>{{$user->description}}</td>
-
                     <td>
-                        <a href="{{route('testimonial.edit',$user->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
-                        <form onsubmit="return confirm('Are you sure want to delete this.??')" method="POST" action="{{route('testimonial.destroy',[$user->id])}}">
+                        <a href="{{route('gallery.edit',$user->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <form onsubmit="return confirm('Are you sure want to delete this.??')" method="POST" action="{{route('gallery.destroy',[$user->id])}}">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$user->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
@@ -79,7 +72,7 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$testimonials->links()}}</span>
+        <span style="float:right">{{$gallerys->links()}}</span>
       </div>
     </div>
 </div>
