@@ -1,10 +1,10 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <h6 class="text-2xl font-bold mb-4" style="font-size: 23px;text-align: center;">Bulldog Sign In</h6> <!-- Added heading here -->
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+        
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -15,7 +15,6 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"

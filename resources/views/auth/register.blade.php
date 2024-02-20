@@ -1,4 +1,6 @@
 <x-guest-layout>
+<h6 class="text-2xl font-bold mb-4" style="font-size: 23px;text-align: center;">Bulldog Register</h6> <!-- Added heading here -->
+    
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
